@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickit Bill Payment</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+
+    <style>
+        body {
+            background-color: #e8f5e9; /* Light green tint */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .payment-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .payment-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .payment-card img {
+            width: 80px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .payment-card img:hover {
+            transform: scale(1.1);
+        }
+
+        .payment-option {
+            background-color: #f1f8e9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .payment-option:hover {
+            background-color: #a5d6a7;
+        }
+
+        .payment-option.active {
+            background-color: #66bb6a;
+            color: white;
+        }
+
+        .submit-btn {
+            background-color: #43a047;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 8px;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #388e3c;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="payment-card">
+                    <h2 class="text-center mb-4 text-success">Tickit Bill Payment</h2>
+                    <form action="tickit_pay_submit" method="post">
+                        <div class="payment-option d-flex align-items-center" data-method="Gpay">
+                            <div class="col-md-3 text-center">
+                                <img src="{{ url_for('static', filename='assets/images/Gpay.jpg') }}" alt="Google Pay">
+                            </div>
+                            <div class="col-md-9">
+                                <label>Google Pay</label>
+                            </div>
+                        </div>
+
+                        <div class="payment-option d-flex align-items-center" data-method="Phone Pay">
+                            <div class="col-md-3 text-center">
+                                <img src="{{ url_for('static', filename='assets/images/phone_pay.jpg') }}" alt="Phone Pay">
+                            </div>
+                            <div class="col-md-9">
+                                <label>Phone Pay</label>
+                            </div>
+                        </div>
+
+                        <div class="payment-option d-flex align-items-center" data-method="PayTm">
+                            <div class="col-md-3 text-center">
+                                <img src="{{ url_for('static', filename='assets/images/paytm1.jpg') }}" alt="PayTm">
+                            </div>
+                            <div class="col-md-9">
+                                <label>PayTm</label>
+                            </div>
+                        </div>
+
+                        <div class="payment-option d-flex align-items-center cash_pay" data-method="Cash Pay">
+                            <div class="col-md-3 text-center">
+                                <img src="{{ url_for('static', filename='assets/images/cash_pay.jpg') }}" alt="Cash Pay">
+                            </div>
+                            <div class="col-md-9">
+                                <label>Cash Pay</label>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="submit-btn">Submit Payment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".payment-option").click(function () {
+                $(".payment-option").removeClass("active");
+                $(this).addClass("active");
+            });
+
+            $(".submit-btn").click(function (e) {
+                if ($(".cash_pay").hasClass("active")) {
+                    alert("Carry your cash.");
+                }
+            });
+        });
+    </script>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

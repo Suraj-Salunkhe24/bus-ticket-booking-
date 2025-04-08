@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Management</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #e0f7fa, #b2ebf2);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        .font-weight-bold {
+            font-size: 1.3rem;
+            color: #007bff;
+        }
+
+        .btn {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-success:hover {
+            background-color: #28a745;
+        }
+
+        .btn-warning:hover {
+            background-color: #ffc107;
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #b2ebf2 !important;
+        }
+
+
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Travel Management</a>
+
+    </nav>
+
+    <!-- USER GOING ROUTES & TIME -->
+    <div id="user-routes" class="container mt-5 border border-primary border-3 rounded p-3">
+        <form action="Travel_roots" method="post" class="text-center">
+            <p class="font-weight-bold">USER GOING ROUTES & TIME</p>
+            <button class="btn btn-dark" type="submit" title="View user routes and time">DETAILS</button>
+        </form>
+    </div>
+
+    <!-- TRAVELS -->
+    <div id="travels" class="container mt-5 border border-primary border-3 rounded p-3">
+        <p class="font-weight-bold text-center">TRAVELS</p>
+        <div class="d-flex justify-content-center flex-wrap">
+
+            <form action="Travel_ADD_view" method="post" class="mr-2 mb-2">
+                <button class="btn btn-success" type="submit" name="add" title="Add new travel details">ADD</button>
+            </form>
+
+            <form action="Travel_view" method="get" class="mr-2 mb-2">
+                <button class="btn btn-warning" type="submit" name="view" title="View travel details">VIEW</button>
+            </form>
+
+            <form action="delete_modify" method="post" class="mb-2">
+                <button class="btn btn-danger" type="submit" name="delete_modify" title="Delete or modify travel details">DELETE / MODIFY</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- USER ALL DATA IN ONE TABLE -->
+    <div id="user-data" class="container mt-5 border border-primary border-3 rounded p-3">
+        <form action="{{ url_for('all_data_use') }}" method="post" class="text-center">
+            <p class="font-weight-bold">USER ALL DATA IN ONE TABLE</p>
+            <button class="btn btn-dark" type="submit" title="View all user details">USER ALL DETAILS</button>
+        </form>
+    </div>
+
+
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

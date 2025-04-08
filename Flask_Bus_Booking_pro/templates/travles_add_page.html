@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Details Form</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    /* Body Background and Centering */
+    body {
+      background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #3f2b96;
+      margin-bottom: 20px;
+      text-align: center;
+      animation: slideInFromLeft 1s ease-out;
+    }
+
+    /* Animation for form fields */
+    .form-group {
+      opacity: 0;
+      animation: fadeInField 0.8s ease-in-out forwards;
+    }
+
+    .form-group:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+    .form-group:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+    .form-group:nth-child(3) {
+      animation-delay: 0.9s;
+    }
+    .form-group:nth-child(4) {
+      animation-delay: 1.2s;
+    }
+    .form-group:nth-child(5) {
+      animation-delay: 1.5s;
+    }
+    .form-group:nth-child(6) {
+      animation-delay: 1.8s;
+    }
+    .form-group:nth-child(7) {
+      animation-delay: 2.1s;
+    }
+
+    /* Button animation */
+    .btn-primary {
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInFromLeft {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInField {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Travel Details Add Form</h2>
+  <form action="/Travel_details" method="post" enctype="multipart/form-data">
+    <!-- Travel Name -->
+    <div class="form-group">
+      <label for="travelsName">Travel Name:</label>
+      <input type="text" class="form-control" id="travelsName" name="Travels_name" placeholder="Enter travel name">
+    </div>
+
+    <!-- Vehicle Number -->
+    <div class="form-group">
+      <label for="vehicleNumber">Vehicle Number:</label>
+      <input type="text" class="form-control" id="vehicleNumber" name="Vehicle_Number" placeholder="Enter vehicle number">
+    </div>
+
+    <!-- Front Image -->
+    <div class="form-group">
+      <label for="frontImage">Front Image:</label>
+      <input type="file" class="form-control-file" id="frontImage" name="Front_Image">
+    </div>
+
+    <!-- Inside Image -->
+    <div class="form-group">
+      <label for="insideImage">Inside Image:</label>
+      <input type="file" class="form-control-file" id="insideImage" name="Inside_Image">
+    </div>
+
+    <!-- Available Seats -->
+    <div class="form-group">
+      <label for="availableSeats">Available Seats:</label>
+      <input type="number" class="form-control" id="availableSeats" name="Available_Seats" placeholder="Enter available seats">
+    </div>
+
+    <!-- From and To -->
+    <div class="form-group">
+      <label>From and To:</label>
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" name="From" placeholder="From">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" name="To" placeholder="To">
+        </div>
+      </div>
+    </div>
+
+    <!-- Ticket Amount -->
+    <div class="form-group">
+      <label for="amount">Amount of Ticket:</label>
+      <input type="number" class="form-control" id="amount" name="Amount" placeholder="Enter ticket amount">
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary btn-block" onclick="return confirm('Data is added in table')">Submit</button>
+  </form>
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

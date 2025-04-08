@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Details Form</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+    h2 {
+      font-size: 1.8rem;
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      font-weight: bold;
+    }
+    .btn-primary {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Modify Travel Details</h2>
+  {% for i in data %}
+  <form action="/update_travel_details?id={{ i[0] }}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{{ i[0] }}">
+    <div class="form-group">
+      <label for="travelsName">Travel Name</label>
+      <input type="text" class="form-control" id="travelsName" name="Travels_name" value="{{ i[1] }}">
+    </div>
+    <div class="form-group">
+      <label for="vehicleNumber">Vehicle Number</label>
+      <input type="text" class="form-control" id="vehicleNumber" name="Vehicle_Number" value="{{ i[2] }}">
+    </div>
+    <div class="form-group">
+      <label for="frontImage">Front Image</label>
+      <input type="file" class="form-control-file" id="frontImage" name="Front_Image">
+    </div>
+    <div class="form-group">
+      <label for="insideImage">Inside Image</label>
+      <input type="file" class="form-control-file" id="insideImage" name="Inside_Image">
+    </div>
+    <div class="form-group">
+      <label for="availableSeats">Available Seats</label>
+      <input type="number" class="form-control" id="availableSeats" name="Available_Seats" value="{{ i[5] }}">
+    </div>
+    <div class="form-group">
+      <label>From and To</label>
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" name="From" value="{{ i[6] }}">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" name="To" value="{{ i[7] }}">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="amount">Amount of Ticket</label>
+      <input type="number" class="form-control" id="amount" name="Amount" value="{{ i[8] }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  {% endfor %}
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
